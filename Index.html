@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ivanti Style UI | Mahesh Karande</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Font: closest to Ivanti -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* =====================
+       IVANTI DESIGN TOKENS
+       ===================== */
+    :root {
+      --bg-app: #f2f5f7;
+      --bg-card: #ffffff;
+      --bg-header: #1f1f1f;
+
+      --border: #cfd7df;
+      --border-soft: #e3e8ee;
+
+      --text-main: #1b1f23;
+      --text-muted: #5f6b7a;
+
+      --blue: #0078d4;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-app);
+      font-family: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    /* =====================
+       TOP HEADER
+       ===================== */
+    .topbar {
+      height: 48px;
+      background: var(--bg-header);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .brand {
+      font-weight: 600;
+      margin-right: 24px;
+      text-transform: lowercase;
+      font-size: 16px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      flex: 1;
+    }
+
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .menu a:hover {
+      opacity: 1;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    /* =====================
+       PAGE WRAPPER
+       ===================== */
+    .page {
+      padding: 18px;
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    /* =====================
+       KPI GRID
+       ===================== */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      min-height: 90px;
+    }
+
+    .kpi-title {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    /* =====================
+       CONTENT CARDS
+       ===================== */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      min-height: 260px;
+    }
+
+    .card-header {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .empty {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-top: 40px;
+    }
+
+    /* =====================
+       BUTTONS
+       ===================== */
+    .btn {
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 6px 14px;
+      border: 1px solid var(--blue);
+      background: #fff;
+      color: var(--blue);
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    /* =====================
+       FOOTER SPACING
+       ===================== */
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="brand">ivanti</div>
+
+    <nav class="menu">
+      <a href="#">Home</a>
+      <a href="#">Incident</a>
+      <a href="#">Service Request</a>
+      <a href="#">Problem</a>
+      <a href="#">Change</a>
+      <a href="#">Release</a>
+      <a href="#">Knowledge</a>
+      <a href="#">CI</a>
+      <a href="#">More…</a>
+    </nav>
+
+    <div class="user">
+      <i class="fa-regular fa-user"></i>
+      Mahesh karande
+    </div>
+  </header>
+
+  <!-- PAGE -->
+  <main class="page">
+    <div class="page-title">Admin Dashboard</div>
+
+    <!-- KPI -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-title">My Assigned Open Tasks</div>
+        <div class="kpi-value">0</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-title">App Errors Today</div>
+        <div class="kpi-value">0</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-title">Assets Sync Errors</div>
+        <div class="kpi-value">0</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-title">Critical Incidents</div>
+        <div class="kpi-value">0</div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="content-grid">
+      <div class="card">
+        <div class="card-header">Changes by Status</div>
+        <div class="empty">Chart placeholder</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Incident Trend</div>
+        <div class="empty">No data to display</div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

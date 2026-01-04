@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mahesh Karande Portfolio</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      background: #ffffff;
+    }
+
+    /* Left grey strip */
+    .left-strip {
+      width: 220px;
+      background: #f2f2f2;
+    }
+
+    /* Main content area */
+    .content {
+      padding: 30px 60px;
+    }
+
+    /* Brand / Logo */
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-icon {
+      width: 26px;
+      height: 26px;
+      background: #c8a25a;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      margin-right: 12px;
+    }
+
+    .brand-title {
+      font-size: 26px;
+      font-weight: 600;
+      color: #c8a25a;
+      letter-spacing: 1px;
+    }
+
+    /* Login box */
+    .login-box {
+      width: 320px;
+      margin-top: 80px; /* controls vertical placement */
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 5px;
+      color: #000;
+    }
+
+    input {
+      width: 100%;
+      padding: 9px;
+      margin-bottom: 16px;
+      border: 1px solid #cfcfcf;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 7px 16px;
+      background: #1f6fb2;
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #155a93;
+    }
+
+    .links {
+      margin-top: 14px;
+      font-size: 13px;
+    }
+
+    .links a {
+      display: block;
+      color: #1f6fb2;
+      text-decoration: none;
+      margin-top: 6px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <script>
+    function handleLogin() {
+      const password = document.getElementById("password").value;
+
+      if (password === "manage") {
+        window.location.href = "/Index.html";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Left grey panel -->
+  <div class="left-strip"></div>
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="brand">
+      <div class="brand-icon"></div>
+      <div class="brand-title">Mahesh Karande Portfolio</div>
+    </div>
+
+    <div class="login-box">
+      <label>User name</label>
+      <input type="text" value="HeatAdmin" readonly />
+
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Password" />
+
+      <button onclick="handleLogin()">Login</button>
+
+      <div class="links">
+        <a href="#">Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

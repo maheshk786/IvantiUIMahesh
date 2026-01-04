@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidirectional Web Architecture - System Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .architecture-diagram {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .diagram-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #4a5568;
+        }
+        
+        .diagram-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .server-node {
+            background: linear-gradient(145deg, #f7fafc, #edf2f7);
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            min-width: 200px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .server-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .server-node.laptop {
+            background: linear-gradient(145deg, #fed7d7, #feb2b2);
+            border-color: #f56565;
+        }
+        
+        .server-node.web {
+            background: linear-gradient(145deg, #c6f6d5, #9ae6b4);
+            border-color: #48bb78;
+        }
+        
+        .server-node.app {
+            background: linear-gradient(145deg, #bee3f8, #90cdf4);
+            border-color: #4299e1;
+        }
+        
+        .server-node.database {
+            background: linear-gradient(145deg, #fbb6ce, #f687b3);
+            border-color: #ed64a6;
+        }
+        
+        .server-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .server-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .server-port {
+            background: rgba(0,0,0,0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .server-details {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .connection-arrow {
+            font-size: 2rem;
+            color: #4299e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+        
+        .feature-description {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .data-flow {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .flow-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        
+        .flow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .flow-step {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .flow-arrow {
+            color: #4299e1;
+            font-size: 1.5rem;
+        }
+        
+        .tech-stack {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tech-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #4a5568;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .tech-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4299e1;
+        }
+        
+        .tech-category h4 {
+            color: #4299e1;
+            margin-bottom: 10px;
+        }
+        
+        .tech-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tech-list li {
+            padding: 5px 0;
+            color: #666;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .tech-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4299e1;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .diagram-container {
+                flex-direction: column;
+            }
+            
+            .connection-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌐 Bidirectional Web Architecture</h1>
+            <p>Real-time communication across all system layers</p>
+        </div>
+        
+        <div class="architecture-diagram">
+            <h2 class="diagram-title">System Architecture Diagram</h2>
+            
+            <div class="diagram-container">
+                <div class="server-node laptop">
+                    <div class="server-icon">💻</div>
+                    <div class="server-title">User Laptop</div>
+                    <div class="server-port">Browser Client</div>
+                    <div class="server-details">
+                        WebSocket Connection<br>
+                        Real-time UI Updates<br>
+                        User Interactions
+                    </div>
+                </div>
+                
+                <div class="connection-arrow">↔️</div>
+                
+                <div class="server-node web">
+                    <div class="server-icon">🌐</div>
+                    <div class="server-title">Web Server</div>
+                    <div class="server-port">Port 3000</div>
+                    <div class="server-details">
+                        HTTP/REST API<br>
+                        Socket.IO Server<br>
+                        Static File Serving
+                    </div>
+                </div>
+                
+                <div class="connection-arrow">↔️</div>
+                
+                <div class="server-node app">
+                    <div class="server-icon">⚙️</div>
+                    <div class="server-title">Application Server</div>
+                    <div class="server-port">Port 3001</div>
+                    <div class="server-details">
+                        Business Logic<br>
+                        User Management<br>
+                        Real-time Broadcasting
+                    </div>
+                </div>
+                
+                <div class="connection-arrow">↔️</div>
+                
+                <div class="server-node database">
+                    <div class="server-icon">🗄️</div>
+                    <div class="server-title">Database Server</div>
+                    <div class="server-port">Port 3002</div>
+                    <div class="server-details">
+                        SQLite Database<br>
+                        Query Processing<br>
+                        Live Statistics
+                    </div>
+                </div>
+            </div>
+            
+            <div class="data-flow">
+                <div class="flow-title">📊 Data Flow Example: Creating a New User</div>
+                <div class="flow-steps">
+                    <div class="flow-step">User submits form</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">Web Server receives</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">App Server processes</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">Database stores</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">Broadcast to all clients</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-stack">
+            <h2 class="tech-title">🛠️ Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h4>Frontend</h4>
+                    <ul class="tech-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>Vanilla JavaScript</li>
+                        <li>Socket.IO Client</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Backend</h4>
+                    <ul class="tech-list">
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>Socket.IO Server</li>
+                        <li>RESTful APIs</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Database</h4>
+                    <ul class="tech-list">
+                        <li>SQLite</li>
+                        <li>Real-time Queries</li>
+                        <li>In-memory Storage</li>
+                        <li>Live Statistics</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Communication</h4>
+                    <ul class="tech-list">
+                        <li>WebSocket Protocol</li>
+                        <li>Bidirectional Events</li>
+                        <li>Real-time Updates</li>
+                        <li>Auto-reconnection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <div class="feature-title">Real-time Bidirectional Communication</div>
+                <div class="feature-description">
+                    WebSocket connections at every layer enable instant data flow in both directions, 
+                    ensuring all clients receive updates immediately.
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <div class="feature-title">Live User Management</div>
+                <div class="feature-description">
+                    Create, view, and manage users with real-time updates. Changes made by one user 
+                    instantly appear for all connected clients.
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <div class="feature-title">System Monitoring</div>
+                <div class="feature-description">
+                    Live connection status, database statistics, and server health monitoring 
+                    with automatic updates every few seconds.
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-title">Error Handling & Recovery</div>
+                <div class="feature-description">
+                    Robust error handling with automatic reconnection, graceful degradation, 
+                    and comprehensive logging throughout the system.
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <div class="feature-title">REST API + WebSockets</div>
+                <div class="feature-description">
+                    Dual communication methods: traditional REST endpoints for standard operations 
+                    and WebSockets for real-time features.
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <div class="feature-title">Easy Development Setup</div>
+                <div class="feature-description">
+                    Simple npm commands to start all servers, development mode with auto-restart, 
+                    and comprehensive documentation for quick setup.
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="public/index.html" class="btn btn-primary">🚀 Launch Live Demo</a>
+            <a href="#" onclick="showInstructions()" class="btn btn-secondary">📖 Setup Instructions</a>
+        </div>
+    </div>
+    
+    <script>
+        function showInstructions() {
+            alert(`Setup Instructions:
+
+1. Install dependencies:
+   npm install
+
+2. Start all servers:
+   npm run start:all
+
+3. Open browser to:
+   http://localhost:3000
+
+4. Test the bidirectional communication:
+   - Add users and see real-time updates
+   - Open multiple tabs to see live sync
+   - Monitor connection status and stats
+
+The system will automatically handle all server connections and provide real-time updates across all layers!`);
+        }
+        
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const serverNodes = document.querySelectorAll('.server-node');
+            
+            serverNodes.forEach((node, index) => {
+                setTimeout(() => {
+                    node.style.opacity = '0';
+                    node.style.transform = 'translateY(20px)';
+                    node.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        node.style.opacity = '1';
+                        node.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

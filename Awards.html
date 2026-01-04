@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Professional Awards & Recognition - Mahesh Karande, Ivanti Neurons Specialist recognized for excellence in ITSM, innovation, and customer service">
+  <meta name="keywords"
+    content="Mahesh Karande Awards, IT Professional Recognition, ITSM Excellence, Innovation Awards">
+  <title>Professional Awards & Recognition - Mahesh Karande | Ivanti Neurons Specialist</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <style>
+    :root {
+      --primary-bg: #0a0a0a;
+      --secondary-bg: #1a1a1a;
+      --card-bg: #2a2a2a;
+      --accent-color: #ffd700;
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --text-muted: #999999;
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+      --shadow-light: 0 4px 20px rgba(255, 215, 0, 0.1);
+      --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.3);
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    /* Header Logo */
+    .header-logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      z-index: 1000;
+    }
+
+    .header-logo:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: var(--shadow-heavy);
+    }
+
+    /* Navigation */
+    .navbar-custom {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+      z-index: 999;
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    .nav-link:hover::before {
+      left: 0;
+    }
+
+    .nav-link.active {
+      background: var(--gradient-primary);
+    }
+
+    /* Main Content */
+    .main-content {
+      padding-top: 100px;
+      min-height: 100vh;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hover-underline {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .hover-underline::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -10px;
+      left: 50%;
+      background: var(--gradient-gold);
+      transition: all 0.4s ease;
+      border-radius: 2px;
+      transform: translateX(-50%);
+    }
+
+    .hover-underline:hover::after {
+      width: 100%;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Awards Highlight Section */
+    .awards-highlight {
+      background: var(--gradient-gold);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      margin: 60px auto;
+      max-width: 800px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .awards-highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(45deg,
+          transparent,
+          transparent 10px,
+          rgba(255, 255, 255, 0.1) 10px,
+          rgba(255, 255, 255, 0.1) 20px);
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%) translateY(-100%);
+      }
+
+      100% {
+        transform: translateX(100%) translateY(100%);
+      }
+    }
+
+    .awards-content {
+      position: relative;
+      z-index: 2;
+      color: #333;
+    }
+
+    .rocket-icon {
+      font-size: 3rem;
+      animation: rocketLaunch 2s ease-in-out infinite;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    @keyframes rocketLaunch {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+
+    .awards-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
+    }
+
+    .awards-list li {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 15px 0;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      display: inline-block;
+      margin: 8px;
+      transition: var(--transition);
+    }
+
+    .awards-list li:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+
+    /* Content Grid */
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .content-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .content-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-heavy);
+      border-color: var(--accent-color);
+    }
+
+    .content-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .content-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      transition: var(--transition);
+    }
+
+    .content-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .content-card iframe {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      transition: var(--transition);
+    }
+
+    .content-card:hover iframe {
+      transform: scale(1.01);
+    }
+
+    /* Fireworks Animation */
+    .firework-container {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      width: 0;
+      height: 0;
+      z-index: 1;
+    }
+
+    .firework {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      position: absolute;
+      animation: explode 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+      }
+    }
+
+    /* Animations */
+    .content-card {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .content-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .content-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .content-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .content-card:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .content-card:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .content-card:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1001;
+    }
+
+    .mobile-menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .nav-container {
+        position: relative;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 90px);
+        background: rgba(26, 26, 26, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 50px;
+        transition: left 0.3s ease;
+        gap: 20px;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-link {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        width: 80%;
+        text-align: center;
+        border-radius: 10px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .awards-highlight {
+        padding: 30px 20px;
+      }
+
+      .awards-list li {
+        font-size: 1rem;
+        margin: 5px;
+        padding: 8px 16px;
+      }
+
+      .main-content {
+        padding-top: 120px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .content-card {
+        padding: 15px;
+      }
+
+      .rocket-icon {
+        font-size: 2.5rem;
+      }
+
+      .awards-highlight {
+        padding: 20px 15px;
+      }
+
+      .nav-link {
+        padding: 12px 25px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .hero-title {
+        font-size: 1.6rem;
+      }
+
+      .content-card {
+        padding: 12px;
+      }
+
+      .rocket-icon {
+        font-size: 2rem;
+      }
+    }
+  </style>
+  <script>
+    // Fireworks animation
+    document.addEventListener('DOMContentLoaded', () => {
+      function createFirework() {
+        const container = document.querySelector('.firework-container');
+        if (!container) return;
+
+        for (let i = 0; i < 12; i++) {
+          const fw = document.createElement('div');
+          fw.classList.add('firework');
+
+          const angle = Math.random() * 2 * Math.PI;
+          const distance = Math.random() * 40 + 20;
+
+          const x = Math.cos(angle) * distance + 'px';
+          const y = Math.sin(angle) * distance + 'px';
+
+          fw.style.setProperty('--x', x);
+          fw.style.setProperty('--y', y);
+
+          container.appendChild(fw);
+
+          setTimeout(() => fw.remove(), 1000);
+        }
+      }
+
+      // Create fireworks every 4 seconds
+      setInterval(createFirework, 4000);
+
+      // Create initial firework after 1 second
+      setTimeout(createFirework, 1000);
+    });
+  </script>
+
+</head>
+
+<body>
+  <!-- Header Logo -->
+  <img src="/incsm.png" class="header-logo" alt="Mahesh Karande - Ivanti Neurons Specialist">
+
+  <!-- Navigation -->
+  <nav class="navbar-custom">
+    <div class="nav-container">
+      <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="/Index.html" class="nav-link">Home</a></li>
+        <li><a href="/Skill.html" class="nav-link">Skills</a></li>
+        <li><a href="/Experience.html" class="nav-link">Experience</a></li>
+        <li><a href="/CoverLetter.html" class="nav-link">Cover Letter</a></li>
+        <li><a href="/Certificate.html" class="nav-link">Certificates</a></li>
+        <li><a href="/Awards.html" class="nav-link active" aria-current="page">Awards</a></li>
+        <li><a href="https://bit.ly/MaheshIvanti" class="nav-link" target="_blank"
+            rel="noopener noreferrer">Projects</a></li>
+        <li><a href="/Contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1 class="hero-title">
+        <span class="hover-underline">Awards & Recognition</span>
+      </h1>
+      <p class="hero-description">
+        Throughout my career, I have been recognized for my exceptional contributions to the IT field, reflecting my
+        commitment to excellence and innovation.
+        I have received multiple accolades for my focus on results, innovative thinking, and dedication to driving
+        impactful solutions. Additionally, I have been
+        honored for my technical expertise and ability to deliver outstanding customer service, consistently making a
+        significant impact in my role.
+      </p>
+    </section>
+
+    <!-- Awards Highlight Section -->
+    <section class="awards-highlight">
+      <div class="firework-container" aria-hidden="true"></div>
+      <div class="awards-content">
+        <div class="rocket-icon" aria-hidden="true">🚀</div>
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: #333;">
+          <i class="fas fa-trophy me-2"></i>Professional Achievements
+        </h2>
+        <ul class="awards-list">
+          <li>🏆 Allscripts Recognition GEM Award</li>
+          <li>🎯 Result Focus Award</li>
+          <li>💡 I Innovate Award</li>
+          <li>👏 Bravo Award</li>
+          <li>🖥️ Hackathon Certification</li>
+          <li>🔧 SAM Tool Excellence Award</li>
+          <li>🌟 Customer Hero Award (x2)</li>
+          <li>🌍 Customer Impact Award (x3)</li>
+        </ul>
+        
+        <!-- Achievement Recognition Image -->
+        <div class="achievement-image" style="margin-top: 30px; text-align: center;">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D22AQFhu-aYRuVAZQ/feedshare-shrink_800/B4DZfPegz_GYAk-/0/1751532572379?e=1767830400&v=beta&t=wCqRWyPRX9ScGSG3xowKE-JiZEz8MrbI9WKTxH2RkM4"
+            alt="Professional Achievement Recognition"
+            loading="lazy"
+            style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);">
+        </div>
+        
+        <!-- Achievement Recognition Image 2 -->
+        <div class="achievement-image" style="margin-top: 20px; text-align: center;">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D22AQFsln_9i5gQrQ/feedshare-shrink_800/B4DZfPeg0lHMAg-/0/1751532572821?e=1767830400&v=beta&t=Jhc3BsCC_0RPCHjh-gqKioKv43_q5WDfYzpCBqYajL4"
+            alt="Professional Achievement Recognition 2"
+            loading="lazy"
+            style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);">
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Grid -->
+    <section class="content-container">
+      <div class="content-grid">
+        <!-- LinkedIn Post 1 -->
+        <article class="content-card">
+          <iframe 
+            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7407657014371389440" 
+            height="839"
+            title="Professional Achievement Recognition Post" 
+            loading="lazy">
+          </iframe>
+        </article>
+
+        <!-- LinkedIn Embed 1 -->
+        <article class="content-card">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7347322979308949504" height="839"
+            title="LinkedIn Professional Update - Recent Achievement" loading="lazy"></iframe>
+        </article>
+
+        <!-- LinkedIn Embed 2 -->
+        <article class="content-card">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7334608559529168896" height="921"
+            title="LinkedIn Professional Update - Career Milestone" loading="lazy"></iframe>
+        </article>
+
+        <!-- LinkedIn Post 2 -->
+        <article class="content-card">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D22AQHuSOGXe5j5xw/feedshare-shrink_2048_1536/B4DZU9BeazHYAs-/0/1740485556140?e=1767830400&v=beta&t=9i2n2oA3Saj3xV7FOoxzTWwlCP08phohVqof8BKS16s"
+            alt="Professional Recognition and Achievement Post" 
+            loading="lazy"
+            style="width: 100%; height: auto; border-radius: 8px;">
+        </article>
+
+        <!-- LinkedIn Embed 3 -->
+        <article class="content-card">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7197950112285757440" height="589"
+            title="LinkedIn Professional Update - Industry Recognition" loading="lazy"></iframe>
+        </article>
+
+        <!-- LinkedIn Embed 4 -->
+        <article class="content-card">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7194930612493791232" height="741"
+            title="LinkedIn Professional Update - Technical Achievement" loading="lazy"></iframe>
+        </article>
+
+        <!-- LinkedIn Embed 5 -->
+        <article class="content-card">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7010468991643054080" height="1007"
+            title="LinkedIn Professional Update - Project Success" loading="lazy"></iframe>
+        </article>
+
+        <!-- LinkedIn Embed 6 -->
+        <article class="content-card">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6810849037588189184" height="692"
+            title="LinkedIn Professional Update - Career Highlight" loading="lazy"></iframe>
+        </article>
+
+        <!-- LinkedIn Embed 7 -->
+        <article class="content-card">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6785833446745927680" height="629"
+            title="LinkedIn Professional Update - Innovation Award" loading="lazy"></iframe>
+        </article>
+
+        <!-- LinkedIn Embed 8 -->
+        <article class="content-card">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6765284787751051264" height="629"
+            title="LinkedIn Professional Update - Excellence Recognition" loading="lazy"></iframe>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', function() {
+          mobileToggle.classList.toggle('active');
+          navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navLinkItems = document.querySelectorAll('.nav-link');
+        navLinkItems.forEach(link => {
+          link.addEventListener('click', function() {
+            mobileToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!mobileToggle.contains(event.target) && !navLinks.contains(event.target)) {
+            mobileToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
