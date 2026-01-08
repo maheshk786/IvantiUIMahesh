@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>New Incident</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f6f8fb;
+      color: #1f2933;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header {
+      margin: 24px;
+      border-radius: 20px;
+      background: radial-gradient(circle at top left, #3a8fb7, #06141f 70%);
+      color: #fff;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .back-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .header-title {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .header-sub {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .favorite-btn {
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* ---------- STEPS ---------- */
+    .steps {
+      max-width: 900px;
+      margin: 32px auto 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 24px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #6b7280;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .step.active {
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    .step-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid #9ca3af;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    .step.active .step-circle {
+      background: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+    }
+
+    .step-line {
+      flex: 1;
+      height: 1px;
+      background: #cbd5e1;
+    }
+
+    /* ---------- CONTENT ---------- */
+    .content {
+      max-width: 700px;
+      margin: 40px auto 120px;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .content h2 {
+      font-size: 22px;
+      margin-bottom: 32px;
+      font-weight: 600;
+    }
+
+    .form-group {
+      text-align: left;
+      margin: 0 auto;
+      max-width: 520px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #9ca3af;
+      outline: none;
+    }
+
+    .form-group input::placeholder {
+      color: #9ca3af;
+      font-style: italic;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+      padding: 16px 24px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: 22px;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-cancel {
+      background: #fff;
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="back-btn">←</div>
+      <div>
+        <div class="header-title">New Incident</div>
+        <div class="header-sub">Submit New Generic Incident</div>
+      </div>
+    </div>
+    <button class="favorite-btn">♡ Add to favorites</button>
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps">
+    <div class="step active">
+      <div class="step-circle">1</div>
+      Step 1
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle">2</div>
+      Step 2
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-circle">3</div>
+      Step 3
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <h2>Hi Mahesh, what do you need help with?</h2>
+
+    <div class="form-group">
+      <label>Issue title*</label>
+      <input type="text" placeholder="What’s the issue you are facing?" />
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <button class="btn btn-cancel">Cancel</button>
+    <button class="btn btn-primary">Continue</button>
+  </div>
+
+</body>
+</html>

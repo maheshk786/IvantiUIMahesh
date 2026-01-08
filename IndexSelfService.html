@@ -333,12 +333,27 @@
       text-decoration: none;
     }
 
-    footer {
-      margin: 40px 0 20px;
-      text-align: center;
-      font-size: 12px;
-      color: #6b7280;
-    }
+    .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  padding: 16px 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+    .action-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
   </style>
 </head>
 
@@ -407,25 +422,42 @@
   </section>
 
   <section class="actions">
-    <div class="action-card">
-      <div class="action-left">
-        <div class="action-icon"><i class="fas fa-layer-group"></i></div>
-        <div>
-          <div class="action-title">Browse Catalog</div>
-          <div class="action-desc">Explore available services</div>
-        </div>
+    <a href="/incident.html"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="action-link">
+  <div class="action-card">
+    <div class="action-left">
+      <div class="action-icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <div>
+        <div class="action-title">Raise a Case</div>
+        <div class="action-desc">Submit a support request</div>
       </div>
     </div>
+  </div>
+</a>
 
-    <div class="action-card">
-      <div class="action-left">
-        <div class="action-icon"><i class="fas fa-headset"></i></div>
-        <div>
-          <div class="action-title">Raise a Case</div>
-          <div class="action-desc">Submit a support request</div>
-        </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd9uEDn-cs0HLepIwgvT2t7PTVmWRf5ncyaAQBSTi_UJNZh6Q/viewform"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="action-link">
+  <div class="action-card">
+    <div class="action-left">
+      <div class="action-icon">
+        <i class="fas fa-comment-dots"></i>
+      </div>
+      <div>
+        <div class="action-title">Feedback</div>
+        <div class="action-desc">Share your feedback or suggestions</div>
       </div>
     </div>
+  </div>
+</a>
+
+</section>
+
   </section>
 
   <section class="content">
