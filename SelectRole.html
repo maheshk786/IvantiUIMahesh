@@ -50,6 +50,7 @@
       font-size: 16px;
       cursor: pointer;
       color: #1f1f1f;
+      user-select: none;
     }
 
     .role.selected {
@@ -111,12 +112,16 @@
     <div class="roles">
       <h4>Select Role</h4>
 
-      <label class="role selected" onclick="selectRole(this)">
+      <label class="role selected"
+             onclick="selectRole(this)"
+             ondblclick="redirectRole('admin')">
         <input type="radio" name="role" value="admin" checked />
         Administrator
       </label>
 
-      <label class="role" onclick="selectRole(this)">
+      <label class="role"
+             onclick="selectRole(this)"
+             ondblclick="redirectRole('self')">
         <input type="radio" name="role" value="self" />
         Self Service
       </label>
@@ -141,8 +146,18 @@
       label.querySelector('input').checked = true;
     }
 
+    function redirectRole(role) {
+      if (role === 'admin') {
+        window.location.href = 'IndexHome.html';
+      } else if (role === 'self') {
+        window.location.href = '/IndexSelfService.html';
+      }
+    }
+
     function submitRole() {
       const selected = document.querySelector('input[name="role"]:checked');
+
+      if (!selected) return;
 
       if (selected.value === 'admin') {
         window.location.href = 'IndexHome.html';

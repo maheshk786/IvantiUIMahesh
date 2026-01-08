@@ -17,47 +17,57 @@
       background: #ffffff;
     }
 
-    .left-strip {
-      width: 220px;
-      background: #f2f2f2;
-    }
-
-    .content {
-      padding: 30px 60px;
-      flex: 1;
-    }
-
-    /* Brand */
-    .brand {
+    /* ================= LAYOUT ================= */
+    .left-panel {
+      width: 50%;
       display: flex;
       align-items: center;
+      justify-content: center;
+      background: #ffffff;
     }
 
-    .brand-icon {
-      width: 26px;
-      height: 26px;
-      background: #c8a25a;
-      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-      margin-right: 12px;
+    .right-panel {
+      width: 50%;
+      background: url("/LoginWallpaper.jpg") no-repeat center center;
+      background-size: cover;
     }
 
-    .brand-title {
-      font-size: 26px;
-      font-weight: 600;
-      color: #c8a25a;
-      letter-spacing: 1px;
+    /* ================= LOGIN CONTENT ================= */
+    .content {
+      width: 100%;
+      max-width: 420px;
+      padding: 40px;
+    }
+
+    /* ================= BRAND ================= */
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+
+    .brand img {
+      height: 36px;
+      margin-bottom: 8px;
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      color: #6b7280;
+      letter-spacing: 0.3px;
     }
 
     /* Login box */
     .login-box {
-      width: 320px;
-      margin-top: 80px;
+      width: 100%;
     }
 
     label {
       display: block;
       font-size: 13px;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      color: #333;
     }
 
     input {
@@ -70,7 +80,7 @@
     }
 
     button {
-      padding: 7px 16px;
+      padding: 8px 18px;
       background: #1f6fb2;
       border: none;
       color: #fff;
@@ -83,71 +93,108 @@
       background: #155a93;
     }
 
-    /* Error message BELOW button */
-    .error-banner {
-      display: none;
-      background: #f2dede;
-      color: #a94442;
-      border: 1px solid #ebccd1;
-      padding: 10px 12px;
-      border-radius: 3px;
-      margin-top: 14px;
-      font-size: 13px;
-      position: relative;
+    /* Password hint (always visible) */
+    .password-hint {
+      margin-top: 12px;
+      font-size: 12.5px;
+      color: #6b7280;
     }
 
-    .error-banner span {
-      position: absolute;
-      right: 10px;
-      top: 4px;
+    .password-hint strong {
+      color: #1f6fb2;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 16px;
+      user-select: none;
+    }
+
+    .password-hint strong:hover {
+      text-decoration: underline;
+    }
+
+    .copy-feedback {
+      display: none;
+      margin-left: 8px;
+      font-size: 12px;
+      color: #16a34a;
+      font-weight: 500;
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+
+      .left-panel,
+      .right-panel {
+        width: 100%;
+        height: 50vh;
+      }
+
+      .left-panel {
+        height: auto;
+        padding: 40px 0;
+      }
     }
   </style>
 
   <script>
     function handleLogin() {
       const password = document.getElementById("password").value;
-      const errorBanner = document.getElementById("errorBanner");
 
       if (password === "manage") {
-        errorBanner.style.display = "none";
         window.location.href = "/SelectRole.html";
-      } else {
-        errorBanner.style.display = "block";
       }
     }
 
-    function closeError() {
-      document.getElementById("errorBanner").style.display = "none";
+    function copyPassword() {
+      const text = "manage";
+
+      navigator.clipboard.writeText(text).then(() => {
+        const feedback = document.getElementById("copyFeedback");
+        feedback.style.display = "inline";
+
+        setTimeout(() => {
+          feedback.style.display = "none";
+        }, 1500);
+      });
     }
   </script>
 </head>
 
 <body>
-  <div class="left-strip"></div>
 
-  <div class="content">
-    <div class="brand">
-      <div class="brand-icon"></div>
-      <div class="brand-title">Mahesh Karande Portfolio</div>
-    </div>
+  <!-- LEFT: LOGIN -->
+  <div class="left-panel">
+    <div class="content">
 
-    <div class="login-box">
-      <label>User name</label>
-      <input type="text" value="Heatadmin" readonly />
+      <!-- BRAND WITH IVANTI LOGO -->
+      <div class="brand">
+        <img src="/_solution_logo_08252022_63097533.png" alt="Ivanti Logo">
+        <div class="brand-subtitle">Mahesh Karande Portfolio</div>
+      </div>
 
-      <label>Password</label>
-      <input type="password" id="password" placeholder="Password" />
+      <div class="login-box">
+        <label>User name</label>
+        <input type="text" value="Heatadmin" readonly />
 
-      <button onclick="handleLogin()">Login</button>
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Password" />
 
-      <!-- Error note BELOW button -->
-      <div id="errorBanner" class="error-banner">
-        Access denied. Password is <strong>manage</strong>
-        <span onclick="closeError()">×</span>
+        <button onclick="handleLogin()">Login</button>
+
+        <!-- CLICK TO COPY PASSWORD -->
+        <div class="password-hint">
+          Password is
+          <strong onclick="copyPassword()">manage</strong>
+          <span id="copyFeedback" class="copy-feedback">Copied</span>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- RIGHT: IMAGE -->
+  <div class="right-panel"></div>
+
 </body>
 </html>
