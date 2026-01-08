@@ -389,7 +389,7 @@
         </div>
       </div>
 
-      <div class="header-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+      <div class="header-icon"><i class="fa-solid fa-arrow-right-from-bracket" id="logoutIcon"></i></div>
     </div>
   </div>
 </header>
@@ -461,8 +461,8 @@
       <h3>Ivanti Neurons for Enterprise Service Management</h3>
       <p>2025.4 (fec08c9f) @ 2025/11/18 07:19:43</p>
       <p>System Compatibility Mode (745)</p>
-      <p><strong>Protected by Patents</strong> Ivanti Patents.</p>
-      <p>Copyright (c) 2005-2025 Ivanti. All Rights Reserved.</p>
+      <p><strong>Protected by Patents</strong> :) Patents.</p>
+      <p>Copyright (c) Mahesh Karande · Ivanti Neurons Specialist</p>
     </div>
 
     <div class="modal-footer">
@@ -487,6 +487,15 @@
 
 
 <script>
+ 
+  const logoutIcon = document.getElementById("logoutIcon");
+
+  logoutIcon.addEventListener("click", () => {
+    window.location.href = "https://maheshkarandeivanti.netlify.app";
+  });
+
+
+
   const userTrigger = document.querySelector(".user-trigger");
   const userDropdown = document.querySelector(".user-dropdown");
   const helpTrigger = document.querySelector(".help-trigger");
