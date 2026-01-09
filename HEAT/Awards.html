@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Awards & Recognition | Mahesh Karande</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="/incsm.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --ivanti-header: #1f1f1f;
+      --ivanti-blue: #0078d4;
+
+      /* macOS white */
+      --primary-bg: #f5f5f7;
+      --card-bg: #ffffff;
+
+      --accent: #ffd700;
+      --text-main: #1d1d1f;
+      --text-muted: #515154;
+
+      --border: #d2d2d7;
+      --radius: 16px;
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", SegoeUI, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-main);
+    }
+
+    /* ===================== IVANTI HEADER (UNCHANGED) ===================== */
+    .topbar {
+      height: 48px;
+      background: var(--ivanti-header);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: lowercase;
+      margin-right: 26px;
+      color: #fff;
+    }
+
+    .menu { flex: 1; }
+
+    .menu ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      padding-bottom: 4px;
+      opacity: 0.95;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      opacity: 1;
+      border-bottom: 2px solid var(--ivanti-blue);
+    }
+
+    /* ===================== ROLE SWITCHER (UNCHANGED) ===================== */
+    .user-menu { position: relative; }
+
+    .user-trigger {
+      background: transparent;
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .user-icon { font-size: 20px; }
+
+    .user-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .user-name { font-size: 13px; font-weight: 600; }
+    .user-role { font-size: 11px; color: #cfcfcf; }
+    .caret { font-size: 11px; }
+
+    .user-dropdown {
+      position: absolute;
+      right: 0;
+      top: 46px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      min-width: 220px;
+      display: none;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    }
+
+    .user-dropdown a {
+      display: block;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #1b1f23;
+      text-decoration: none;
+    }
+
+    .user-dropdown a:hover { background: #f2f5f7; }
+
+    .page-offset { padding-top: 48px; }
+
+    /* ===================== PAGE CONTENT ===================== */
+    .main-content {
+      padding: 120px 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hover-underline {
+      position: relative;
+      display: inline-block;
+      color: var(--ivanti-blue);
+    }
+
+    .hover-underline::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      width: 0;
+      height: 3px;
+      background: var(--ivanti-blue);
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    .hover-underline:hover::after { width: 100%; }
+
+    .hero-description {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 60px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===================== AWARDS CONTENT (CLASS UNCHANGED) ===================== */
+    .awards-highlight {
+      background: linear-gradient(135deg, #ffd700, #ffb347);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin-bottom: 60px;
+    }
+
+    .awards-content {
+      text-align: center;
+      color: #333;
+    }
+
+    .awards-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .awards-list li {
+      background: rgba(255,255,255,0.4);
+      padding: 10px 18px;
+      border-radius: 22px;
+      font-weight: 600;
+    }
+
+    .achievement-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 24px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    /* ===================== GRID ===================== */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 26px;
+    }
+
+    .content-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .content-card iframe,
+    .content-card img {
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">ivanti</div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="/HEAT/Default.html">Home</a></li>
+      <li><a href="/HEAT/Skill.html">Skills</a></li>
+      <li><a href="/HEAT/Experience.html">Experience</a></li>
+      <li><a href="/HEAT/CoverLetter.html">Cover Letter</a></li>
+      <li><a href="/HEAT/Certificate.html">Certificates</a></li>
+      <li><a href="/HEAT/Awards.html" class="active">Awards</a></li>
+      <li><a href="https://bit.ly/MaheshIvanti" target="_blank">Projects</a></li>
+       <li><a href="/HEAT/Contact.html" target="_blank">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-menu">
+    <button class="user-trigger">
+      <i class="fa-regular fa-user user-icon"></i>
+      <div class="user-text">
+        <div class="user-name">Mahesh Karande</div>
+        <div class="user-role">Administrator</div>
+      </div>
+      <i class="fa-solid fa-caret-down caret"></i>
+    </button>
+
+    <!-- <div class="user-dropdown">
+      <a href="/IndexHome.html">Administrator</a>
+      <a href="/IndexSelfService.html">Self Service</a>
+    </div> -->
+  </div>
+</header>
+
+<div class="page-offset">
+<main class="main-content">
+
+  <h1 class="hero-title">
+    <span class="hover-underline">Awards & Recognition</span>
+  </h1>
+
+  <p class="hero-description">
+    Recognized for excellence in ITSM delivery, innovation, customer impact,
+    and enterprise automation across global environments.
+  </p>
+
+  <section class="awards-highlight">
+    <div class="awards-content">
+      <h2>Professional Achievements</h2>
+
+      <ul class="awards-list">
+        <li>🏆 Allscripts GEM Award</li>
+        <li>🎯 Result Focus Award</li>
+        <li>💡 I Innovate Award</li>
+        <li>👏 Bravo Award</li>
+        <li>🖥️ Hackathon Certification</li>
+        <li>🔧 SAM Tool Excellence Award</li>
+        <li>🌟 Customer Hero Award (x2)</li>
+        <li>🌍 Customer Impact Award (x3)</li>
+      </ul>
+
+    
+  </section>
+
+  <section class="content-grid">
+    <div class="content-card"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7407657014371389440" height="839"></iframe></div>
+    <div class="content-card"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7347322979308949504" height="839"></iframe></div>
+    <div class="content-card"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7334608559529168896" height="921"></iframe></div>
+    <div class="content-card"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7197950112285757440" height="589"></iframe></div>
+    <div class="content-card"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7194930612493791232" height="741"></iframe></div>
+    <div class="content-card"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7010468991643054080" height="1007"></iframe></div>
+    <div class="content-card"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6810849037588189184" height="692"></iframe></div>
+    <div class="content-card"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6785833446745927680" height="629"></iframe></div>
+    <div class="content-card"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6765284787751051264" height="629"></iframe></div>
+  </section>
+
+</main>
+</div>
+
+<script>
+  const trigger = document.querySelector(".user-trigger");
+  const dropdown = document.querySelector(".user-dropdown");
+
+  trigger.addEventListener("click", e => {
+    e.stopPropagation();
+    dropdown.style.display =
+      dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  document.addEventListener("click", () => {
+    dropdown.style.display = "none";
+  });
+</script>
+
+</body>
+</html>

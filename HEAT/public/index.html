@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Mahesh Karande - Ivanti Neurons Specialist with 8+ years experience in ITSM, ITAM & Discovery. Delivered solutions for 32+ clients globally." />
+    <meta name="keywords" content="Ivanti Neurons, ITSM, ITAM, IT Service Management, Mahesh Karande" />
+    <title>Mahesh Karande | Ivanti Neurons Specialist & ITSM Expert</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --accent-color: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-accent: #ff6b6b;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --shadow-light: 0 4px 20px rgba(255, 215, 0, 0.1);
+            --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.3);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Header Logo */
+        .header-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            z-index: 1000;
+            border-radius: 50%;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .header-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        /* Navigation */
+        .navbar-custom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            z-index: 999;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        /* Main Content */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 40px;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-greeting {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-name {
+            font-size: 2.5rem;
+            color: var(--text-accent);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .tech-icons {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .tech-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .tech-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .cta-section {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow-light);
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .highlights {
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .highlights h5 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlights li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .highlights li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* 3D Cube - Original Working Version */
+        .image {
+            flex: 1;
+            min-width: 300px;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box-card {
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+        }
+
+        .box-card:hover {
+            animation: rotate3d 6s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: #333;
+            border: 2px solid #646cff;
+            border-radius: 12px;
+            color: #fff;
+        }
+
+        .front {
+            transform: translateZ(100px);
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(100px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .left {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes rotate3d {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-bg);
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-note {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-greeting {
+                font-size: 2.5rem;
+            }
+
+            .hero-name {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .box-card {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-link {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+                width: 80%;
+                text-align: center;
+                border-radius: 10px;
+            }
+
+            .hero-greeting {
+                font-size: 2rem;
+            }
+
+            .hero-name {
+                font-size: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 1.3rem;
+            }
+
+            .cta-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-section {
+                padding-top: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-greeting {
+                font-size: 1.8rem;
+            }
+
+            .hero-name {
+                font-size: 1.3rem;
+            }
+
+            .hero-title {
+                font-size: 1.1rem;
+            }
+
+            .nav-link {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .box-card {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-greeting {
+                font-size: 1.6rem;
+            }
+
+            .hero-name {
+                font-size: 1.2rem;
+            }
+
+            .hero-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Logo -->
+    <img src="/incsm.png" class="header-logo" alt="Mahesh Karande - Ivanti Neurons Specialist" />
+
+    <!-- Navigation -->
+    <nav class="navbar-custom">
+        <div class="nav-container">
+            <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/Index.html" class="nav-link" aria-current="page">Home</a></li>
+                <li><a href="/Skill.html" class="nav-link">Skills</a></li>
+                <li><a href="/Experience.html" class="nav-link">Experience</a></li>
+                <li><a href="/CoverLetter.html" class="nav-link">Cover Letter</a></li>
+                <li><a href="/Certificate.html" class="nav-link">Certificates</a></li>
+                <li><a href="/Awards.html" class="nav-link">Awards</a></li>
+                <li><a href="https://bit.ly/MaheshIvanti" class="nav-link" target="_blank"
+                        rel="noopener noreferrer">Projects</a></li>
+                <li><a href="/Contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <!-- Text Content -->
+            <div class="hero-text">
+                <h1 class="hero-greeting">Hello</h1>
+                <h2 class="hero-name">I'm Mahesh Karande</h2>
+
+                <!-- Tech Icons -->
+                <div class="tech-icons">
+                    <img src="/attach/html-1.png" alt="HTML" class="tech-icon" title="HTML5">
+                    <img src="/attach/css-3.png" alt="CSS" class="tech-icon" title="CSS3">
+                    <img src="/attach/java-script.png" alt="JavaScript" class="tech-icon" title="JavaScript">
+                    <img src="/attach/Ivanti_Log.png" alt="Ivanti" class="tech-icon" title="Ivanti Neurons">
+                    <img src="/attach/icons8-powershell-96.png" alt="PowerShell" class="tech-icon" title="PowerShell">
+                </div>
+
+                <h3 class="hero-title">Ivanti Neurons Expert in ITSM, ITAM & Discovery</h3>
+                <p class="hero-description">
+                    With 8+ years of experience in enterprise service management, I specialize in Ivanti Neurons for
+                    ITSM, ITAM,
+                    and integrations.
+                    I've delivered automation and platform solutions for 32+ clients across industries. Open to new
+                    opportunities,
+                    collaborations,
+                    or contract work globally.
+                </p>
+
+                <!-- Call to Action -->
+                <div class="cta-section">
+                    <a href="https://bit.ly/MaheshCV" class="btn-primary-custom" download
+                        aria-label="Download Mahesh's Resume">
+                        <i class="fas fa-download me-2"></i>Download My CV
+                    </a>
+
+                    <div class="social-links">
+                        <a href="mailto:mkarande786@gmail.com" class="social-link" title="Email Mahesh"
+                            aria-label="Send email to Mahesh">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://maheshkarande.netlify.app/contact" class="social-link" target="_blank"
+                            rel="noopener noreferrer" title="Connect on LinkedIn"
+                            aria-label="Connect with Mahesh on LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Highlighted Work -->
+                <div class="highlights">
+                    <h5><i class="fas fa-star me-2"></i>Highlighted Work</h5>
+                    <ul>
+                        <li>Integrated Intune & CMDB via Web Scripting</li>
+                        <li>Experienced in Ivanti Neurons Discovery, including Agent Policies, Patching, and Software
+                            Application Distribution</li>
+                        <li>Built cross-platform dashboards (Ivanti + Scripting)</li>
+                        <li>Automated ITSM/ITAM workflows for 32+ global clients</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3D Cube Animation -->
+            <div class="image">
+                <div class="box-card">
+                    <div class="face front">ITSM</div>
+                    <div class="face back">ITAM</div>
+                    <div class="face right">API</div>
+                    <div class="face left">CMDB</div>
+                    <div class="face top">Cloud</div>
+                    <div class="face bottom">On-Prem</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">
+            &copy; 2025 Mahesh Karande. All rights reserved.
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-desktop me-1"></i>Optimized for all devices
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function () {
+                    mobileToggle.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when clicking on a link
+                const navLinkItems = document.querySelectorAll('.nav-link');
+                navLinkItems.forEach(link => {
+                    link.addEventListener('click', function () {
+                        mobileToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function (event) {
+                    if (!mobileToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                        mobileToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

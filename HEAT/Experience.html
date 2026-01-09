@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Professional Experience | Mahesh Karande</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description"
+    content="Professional Experience - Mahesh Karande, Ivanti Neurons Specialist with 8+ years in ITSM, ITAM & Discovery" />
+  <meta name="keywords"
+    content="Ivanti Experience, ITSM Expert, ITAM Specialist, Mahesh Karande Career" />
+
+  <link rel="icon" type="image/png" href="/incsm.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --ivanti-header: #1f1f1f;
+      --ivanti-blue: #0078d4;
+      --border: #d2d2d7;
+
+      /* macOS white */
+      --bg-main: #f5f5f7;
+      --card-bg: #ffffff;
+
+      --text-main: #1d1d1f;
+      --text-muted: #515154;
+
+      --accent: #ffd700;
+      --transition: all 0.3s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", SegoeUI, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER (UNCHANGED) ===== */
+    .topbar {
+      height: 48px;
+      background: var(--ivanti-header);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: lowercase;
+      margin-right: 26px;
+      color: #fff;
+    }
+
+    .menu { flex: 1; }
+
+    .menu ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      padding-bottom: 4px;
+      opacity: 0.95;
+    }
+
+    .menu a.active,
+    .menu a:hover {
+      opacity: 1;
+      border-bottom: 2px solid var(--ivanti-blue);
+    }
+
+    /* ===== ROLE SWITCHER (UNCHANGED) ===== */
+    .user-menu { position: relative; }
+
+    .user-trigger {
+      background: none;
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .user-icon { font-size: 20px; }
+
+    .user-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .user-name { font-size: 13px; font-weight: 600; }
+    .user-role { font-size: 11px; color: #cfcfcf; }
+
+    .caret { font-size: 11px; }
+
+    .user-dropdown {
+      position: absolute;
+      right: 0;
+      top: 46px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      min-width: 220px;
+      display: none;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      z-index: 2000;
+    }
+
+    .user-dropdown a {
+      display: block;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #1b1f23;
+      text-decoration: none;
+    }
+
+    .user-dropdown a:hover { background: #f2f5f7; }
+
+    .page-offset { padding-top: 48px; }
+
+    /* ===== PAGE ===== */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-desc {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 70px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(#667eea, #764ba2);
+      transform: translateX(-50%);
+    }
+
+    .experience {
+      position: relative;
+      margin-bottom: 70px;
+    }
+
+    .dot {
+      position: absolute;
+      left: 50%;
+      top: 34px;
+      width: 14px;
+      height: 14px;
+      background: var(--ivanti-blue);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(0,120,212,0.4);
+      z-index: 5;
+    }
+
+    .card {
+      width: 48%;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--ivanti-blue);
+    }
+
+    .left { margin-right: auto; }
+    .right { margin-left: auto; }
+
+    .company {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ivanti-blue);
+      margin-bottom: 6px;
+    }
+
+    .role {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .date {
+      font-size: 0.9rem;
+      color: #6e6e73;
+      margin-bottom: 18px;
+    }
+
+    .points {
+      list-style: none;
+    }
+
+    .points li {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .points li::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      color: var(--ivanti-blue);
+      font-size: 0.75rem;
+      top: 3px;
+    }
+
+    @media (max-width: 900px) {
+      .timeline::before { left: 24px; }
+      .dot { left: 24px; }
+      .card {
+        width: 100%;
+        margin-left: 50px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">ivanti</div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="/HEAT/Default.html">Home</a></li>
+      <li><a href="/HEAT/Skill.html">Skills</a></li>
+      <li><a href="/HEAT/Experience.html" class="active">Experience</a></li>
+      <li><a href="/HEAT/CoverLetter.html">Cover Letter</a></li>
+      <li><a href="/HEAT/Certificate.html">Certificates</a></li>
+      <li><a href="/HEAT/Awards.html">Awards</a></li>
+      <li><a href="https://bit.ly/MaheshIvanti" target="_blank">Projects</a></li>
+       <li><a href="/HEAT/Contact.html" target="_blank">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-menu">
+    <button class="user-trigger">
+      <i class="fa-regular fa-user user-icon"></i>
+      <div class="user-text">
+        <div class="user-name">Mahesh Karande</div>
+        <div class="user-role">Administrator</div>
+      </div>
+      <i class="fa-solid fa-caret-down caret"></i>
+    </button>
+
+    <!-- <div class="user-dropdown">
+      <a href="/IndexHome.html">Administrator</a>
+      <a href="/IndexSelfService.html">Self Service</a>
+    </div> -->
+  </div>
+</header>
+
+<div class="page-offset">
+<main class="page">
+
+  <h1 class="page-title">Professional Experience</h1>
+  <p class="page-desc">
+   With extensive experience in ITSM and ITAM, I have honed my technical skills over the years,
+                specializing in Ivanti and its integrations.
+                These tools and technologies enable me to optimize workflows, automate processes, and develop efficient
+                solutions that drive business success.
+  </p>
+
+  <section class="timeline">
+
+    <!-- HADRON GBS -->
+    <div class="experience">
+      <span class="dot"></span>
+      <div class="card left">
+        <div class="company">Hadron GBS</div>
+        <div class="role">Specialist Ivanti Admin</div>
+        <div class="date">January 2024 – Present</div>
+        <ul class="points">
+          <li>Designed, configured, and maintained the Ivanti Neurons ITSM platform, supporting key IT
+                            service management processes including Incident, Request, Problem, Change, Service Catalog,
+                            and Asset Management</li>
+                        <li>Customized Ivanti ITSM modules to meet client-specific needs across the US, APAC, EMEA, and
+                            Europe—optimizing workflows, forms, templates, and business reports to enhance service
+                            delivery</li>
+                        <li>Integrated Ivanti with external platforms such as ServiceNow (via REST APIs), Azure Active
+                            Directory, and SSO, ensuring seamless data flow and authentication across systems</li>
+                        <li>Developed and automated workflows, reports, and templates within Ivanti Neurons to
+                            streamline CMDB, CI creation, and approval processes</li>
+                        <li>Managed user roles, access, and permissions in Ivanti, maintaining data security and
+                            integrity through LDAP and Azure AD synchronization</li>
+                        <li>Led end-to-end implementations of Ivanti ITSM solutions—both cloud-based and
+                            on-premises—ensuring scalability and strong performance</li>
+                        <li>Monitored and improved platform performance, resolved logic issues, and earned client praise
+                            for increasing system reliability and support efficiency</li>
+                        <li>Worked closely with cross-functional teams to identify automation opportunities and align
+                            ITSM processes with ITIL standards</li>
+                        <li>Provided end-user training and support, authored user guides and SOPs, and promoted
+                            self-service adoption across teams</li>
+                        <li>Handled upgrades, release testing, and continuous tuning of the Ivanti Neurons platform to
+                            ensure system stability and responsiveness</li>
+                        <li>Hands-on experience with Ivanti Neurons for Discovery, agent deployment, patch installation,
+                            application distribution, and bundle creation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MEDLINE -->
+    <div class="experience">
+      <span class="dot"></span>
+      <div class="card right">
+        <div class="company">Medline Inc</div>
+        <div class="role">Heat Admin / Ivanti Admin / Developer</div>
+        <div class="date">February 2019 – December 2023</div>
+        <ul class="points">
+         <li>Developed and maintained the Asset Verification Portal for Medline India using Java,
+                            JavaScript, MySQL, and Tomcat</li>
+                        <li>Upgraded the ISM production environment and implemented Twilio automation for SMS
+                            communication, enhancing user engagement and incident resolution processes</li>
+                        <li>Integrated Security Incident Management (SecOps) within ISM to efficiently handle
+                            security-related incidents and improve response times</li>
+                        <li>Automated manager approval workflows and performed bulk Service Request (SR) uploads using
+                            PowerShell and XML scripts</li>
+                        <li>Tested and optimized REST API connections for system integrations using Postman to ensure
+                            seamless connectivity and functionality</li>
+                        <li>Provided Jira support for project tracking, handled bug resolutions, and managed backlogs to
+                            ensure timely delivery of project milestones</li>
+                        <li>Enhanced workflows, business rules, and user permissions within Ivanti Service Management
+                            (ISM), resulting in increased system efficiency</li>
+                        <li>Utilized Ivanti ticketing system to log, track, and manage incidents, ensuring detailed
+                            documentation and prompt resolution</li>
+                        <li>Managed Ivanti Configuration Items (CI) and the Configuration Management Database (CMDB)
+                        </li>
+                        <li>Administered Ivanti Access, managing user access, permissions, and security configurations
+                            for end-user computing devices</li>
+                        <li>Applied Ivanti Quick Actions and workflows to automate and streamline incident management,
+                            improving operational efficiency</li>
+                        <li>Developed and implemented Ivanti Business Rules to optimize workflow processes and enhance
+                            ticketing accuracy</li>
+                        <li>Created Service Catalogs and complex workflows within Ivanti to ensure seamless service
+                            request handling</li>
+                        <li>Managed and maintained both Application Servers and Database Servers, ensuring high
+                            availability, performance, and security</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TEAMWARE -->
+    <div class="experience">
+      <span class="dot"></span>
+      <div class="card left">
+        <div class="company">Teamware Solutions</div>
+        <div class="role">Senior Analyst Ivanti Admin</div>
+        <div class="date">February 2019 – October 2020</div>
+        <ul class="points">
+          <li>Utilized Ivanti ticketing system to log, track, and manage incidents, ensuring detailed
+                            documentation and timely resolution</li>
+                        <li>Handled Ivanti Configuration Items (CI) and Configuration Management Database (CMDB),
+                            ensuring accurate tracking and management</li>
+                        <li>Administered Ivanti Access, managing user access, permissions, and security configurations
+                            for end-user computing devices</li>
+                        <li>Applied Ivanti Quick Actions and workflows to automate and streamline incident management
+                            processes</li>
+                        <li>Developed and implemented Ivanti Business Rules to optimize workflow processes and enhance
+                            ticketing accuracy</li>
+                        <li>Created Service Catalogs and complex workflows within Ivanti to ensure seamless service
+                            request handling</li>
+                        <li>Managed and maintained both Application Servers and Database Servers, ensuring high
+                            availability and performance</li>
+                        <li>Managed and supported desktop support and helpdesk services, overseeing hardware and
+                            application troubleshooting</li>
+                        <li>Ensured the monitoring, management, and restoration of end-user computing devices</li>
+                        <li>Managed Active Directory (AD) tasks such as user account resets, creation, and management
+                        </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ALLSCRIPTS -->
+    <div class="experience">
+      <span class="dot"></span>
+      <div class="card right">
+        <div class="company">Allscripts</div>
+        <div class="role">Helpdesk Domain – Ivanti Admin</div>
+        <div class="date">May 2017 – December 2018</div>
+        <ul class="points">
+            <li>Created and managed tasks within Ivanti to streamline issue resolution and improve incident
+                            management processes</li>
+                        <li>Managed the Application Server and Database Server with focus on performance and reliability
+                        </li>
+                        <li>Troubleshot desktop, printer, and Allscripts application issues, providing efficient
+                            resolutions</li>
+                        <li>Utilized Ivanti ticketing system to log, track, and manage incidents with proper
+                            documentation</li>
+                        <li>Achieved a 91% first-call resolution rate by troubleshooting issues effectively and
+                            escalating when necessary</li>
+                        <li>Documented all incidents in systems such as Remedy, ServiceNow, and Ivanti with detailed
+                            comments and timely updates</li>
+                        <li>Provided independent support for GW and CHI clients, resolving technical issues through
+                            thorough research</li>
+                        <li>Managed shared mailboxes and collaborated with the onsite team to resolve tickets and emails
+                            efficiently</li>
+                        <li>Performed Active Directory tasks, including account resets, profile creation, and user
+                            account management</li>
+                        <li>Gained knowledge of AEHR and PPMS systems to provide comprehensive user support and
+                            troubleshooting</li>
+                        <li>Delivered password resets, break fixes, printer support, and network connectivity
+                            troubleshooting</li>
+                        <li>Maintained strong communication with customers, ensuring complete problem resolution and
+                            status updates</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+</div>
+
+<script>
+  const trigger = document.querySelector(".user-trigger");
+  const dropdown = document.querySelector(".user-dropdown");
+
+  trigger.addEventListener("click", e => {
+    e.stopPropagation();
+    dropdown.style.display =
+      dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  document.addEventListener("click", () => {
+    dropdown.style.display = "none";
+  });
+</script>
+
+</body>
+</html>

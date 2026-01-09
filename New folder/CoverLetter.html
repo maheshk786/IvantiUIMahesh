@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cover Letter | Mahesh Karande</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cover Letter - Mahesh Karande, Ivanti Neurons Specialist" />
+
+  <link rel="icon" type="image/png" href="/incsm.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --ivanti-header: #1f1f1f;
+      --ivanti-blue: #0078d4;
+      --border: #cfd7df;
+
+      --bg-main: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-main: #1b1f23;
+      --text-muted: #5f6b7a;
+      --gradient: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", SegoeUI, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+    }
+
+    /* ===== TOP BAR ===== */
+    .topbar {
+      height: 48px;
+      background: var(--ivanti-header);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: lowercase;
+      margin-right: 26px;
+      color: #fff;
+    }
+
+    .menu { flex: 1; }
+
+    .menu ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      padding-bottom: 4px;
+      opacity: 0.95;
+    }
+
+    .menu a.active,
+    .menu a:hover {
+      opacity: 1;
+      border-bottom: 2px solid var(--ivanti-blue);
+    }
+
+    /* ===== USER / ROLE SWITCHER ===== */
+    .user-menu { position: relative; }
+
+    .user-trigger {
+      background: none;
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .user-icon { font-size: 20px; }
+
+    .user-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .user-name { font-size: 13px; font-weight: 600; }
+    .user-role { font-size: 11px; color: #cfcfcf; }
+    .caret { font-size: 11px; }
+
+    .user-dropdown {
+      position: absolute;
+      right: 0;
+      top: 46px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      min-width: 220px;
+      display: none;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      z-index: 2000;
+    }
+
+    .user-dropdown a {
+      display: block;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #1b1f23;
+      text-decoration: none;
+    }
+
+    .user-dropdown a:hover { background: #f2f5f7; }
+
+    .page-offset { padding-top: 48px; }
+
+    /* ===== CARD ===== */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: var(--gradient);
+      color: #fff;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .header p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    .content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
+
+    /* ===== hover-underline ===== */
+    .hover-underline {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hover-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      height: 3px;
+      width: 0;
+      background: var(--gradient);
+      transition: width 0.4s ease;
+      border-radius: 2px;
+    }
+
+    .hover-underline:hover::after {
+      width: 100%;
+    }
+
+    .content p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+      text-align: justify;
+    }
+
+    .signature {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e3e8ee;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .header { flex-direction: column; text-align: center; }
+      .content { padding: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">ivanti</div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="/Default.html">Home</a></li>
+      <li><a href="/Skill.html">Skills</a></li>
+      <li><a href="/Experience.html">Experience</a></li>
+      <li><a href="/CoverLetter.html" class="active">Cover Letter</a></li>
+      <li><a href="/Certificate.html">Certificates</a></li>
+      <li><a href="/Awards.html">Awards</a></li>
+      <li><a href="https://bit.ly/MaheshIvanti" target="_blank">Projects</a></li>
+       <li><a href="/Contact.html" target="_blank">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-menu">
+    <button class="user-trigger">
+      <i class="fa-regular fa-user user-icon"></i>
+      <div class="user-text">
+        <div class="user-name">Mahesh Karande</div>
+        <div class="user-role">Administrator</div>
+      </div>
+      <i class="fa-solid fa-caret-down caret"></i>
+    </button>
+
+    <!-- <div class="user-dropdown">
+      <a href="/IndexHome.html">Administrator</a>
+      <a href="/IndexSelfService.html">Self Service</a>
+    </div> -->
+  </div>
+</header>
+
+<div class="page-offset">
+  <section class="container">
+    <div class="header">
+      <img src="/incsm.png" alt="Mahesh Karande">
+      <div>
+        <h1>Mahesh Ananda Karande</h1>
+        <p>Ivanti Neurons Specialist & ITSM Expert</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2><span class="hover-underline">Professional Cover Letter</span></h2>
+
+      <p><strong>Dear Hiring Manager,</strong></p>
+
+      <p>
+        I am writing to express my strong interest in the Ivanti Neurons Specialist position. With over 8 years of hands-on experience as an Ivanti Developer, along with multiple certifications in Ivanti Service Management (ISM), Neurons for ITSM, ITAM, and ITIL, I am confident in my ability to contribute effectively to your organization.
+      </p>
+
+      <p>
+        Throughout my career, I have gained extensive experience in developing and maintaining ITSM and ITAM solutions using Ivanti platforms. I have been responsible for designing, developing, and implementing complex workflows, custom applications, and integrations within the Ivanti Neurons ecosystem. In my current role as a Specialist Ivanti Neurons Developer, I have successfully configured and customized Ivanti ITSM modules for clients globally, ensuring seamless integration with third-party systems and optimizing IT operations for improved service delivery.
+      </p>
+
+      <p>
+        I have also played a key role in integrating Ivanti with external systems such as ServiceNow, MS Teams, and Azure AD, ensuring seamless communication and synchronization across platforms. My ability to work across cloud-based and on-premise Ivanti solutions, coupled with my expertise in API integrations, automation, and scripting, has allowed me to streamline workflows and reduce operational overhead. Additionally, I have provided ongoing training and support to end-users, developed documentation, and regularly conducted performance reviews, all while ensuring adherence to ITIL best practices.
+      </p>
+
+      <p>
+        In my previous roles, I have consistently delivered results by optimizing incident management workflows, implementing custom business rules, and automating processes such as bulk service request creation and manager approval workflows. This experience has helped me develop strong troubleshooting and problem-solving skills, which I use to improve efficiency and reduce response times. I am passionate about delivering high-quality solutions that align with business needs and drive process improvement across organizations.
+      </p>
+
+      <p>
+        I am confident that my expertise in Ivanti Neurons and ITSM, combined with my ability to collaborate with cross-functional teams, will enable me to contribute to the success of your organization. I would be excited to bring my skills and experience to your team and help achieve new levels of success in IT service management.
+      </p>
+
+      <p>
+        Thank you for considering my application. I look forward to the opportunity to discuss how my background and skills can contribute to your team.
+      </p>
+
+      <div class="signature">
+        <p>Sincerely,<br>Mahesh Ananda Karande</p>
+        <p id="date"></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  const trigger = document.querySelector(".user-trigger");
+  const dropdown = document.querySelector(".user-dropdown");
+
+  trigger.addEventListener("click", e => {
+    e.stopPropagation();
+    dropdown.style.display =
+      dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  document.addEventListener("click", () => dropdown.style.display = "none");
+
+  document.getElementById("date").textContent =
+    new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+</script>
+
+</body>
+</html>

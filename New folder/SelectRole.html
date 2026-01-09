@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ivanti Neurons for ITSM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #1f1f1f;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    .header span {
+      font-weight: 400;
+    }
+
+    /* Main layout */
+    .content {
+      position: relative;
+      padding: 80px 120px;
+      min-height: 300px;
+    }
+
+    /* Left section */
+    .roles {
+      max-width: 300px;
+    }
+
+    .roles h4 {
+      margin: 0 0 18px 0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .role {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #1f1f1f;
+      user-select: none;
+    }
+
+    .role.selected {
+      color: #2c5aa0;
+      font-weight: 600;
+    }
+
+    /* Hide radio inputs */
+    .role input {
+      display: none;
+    }
+
+    /* Centered submit button */
+    .actions {
+      position: absolute;
+      left: 50%;
+      top: 140px;
+      transform: translateX(-50%);
+    }
+
+    button {
+      padding: 8px 18px;
+      background: #3a5169;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2f4256;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 11px;
+      color: #8c8c8c;
+    }
+
+    footer a {
+      color: #2c5aa0;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    ivanti <span>Neurons for ITSM</span>
+  </div>
+
+  <div class="content">
+    <!-- Left -->
+    <div class="roles">
+      <h4>Select Role</h4>
+
+      <label class="role selected"
+             onclick="selectRole(this)"
+             ondblclick="redirectRole('admin')">
+        <input type="radio" name="role" value="admin" checked />
+        Administrator
+      </label>
+
+      <label class="role"
+             onclick="selectRole(this)"
+             ondblclick="redirectRole('self')">
+        <input type="radio" name="role" value="self" />
+        Self Service
+      </label>
+    </div>
+
+    <!-- Center -->
+    <div class="actions">
+      <button onclick="submitRole()">Submit</button>
+    </div>
+  </div>
+
+  <footer>
+    To learn more about our innovative IT Service Management solutions, visit our website at
+    <a href="https://www.ivanti.com" target="_blank">Ivanti</a><br />
+    Copyright © 2025 Mahesh Karande · Ivanti Neurons Specialist.
+  </footer>
+
+  <script>
+    function selectRole(label) {
+      document.querySelectorAll('.role').forEach(r => r.classList.remove('selected'));
+      label.classList.add('selected');
+      label.querySelector('input').checked = true;
+    }
+
+    function redirectRole(role) {
+      if (role === 'admin') {
+        window.location.href = '/HEATDefault.html';
+      } else if (role === 'self') {
+        window.location.href = '/HEAT/Service.html';
+      }
+    }
+
+    function submitRole() {
+      const selected = document.querySelector('input[name="role"]:checked');
+
+      if (!selected) return;
+
+      if (selected.value === 'admin') {
+        window.location.href = '/HEATDefault.html';
+      } else if (selected.value === 'self') {
+        window.location.href = '/HEAT/Service.html';
+      }
+    }
+  </script>
+
+</body>
+</html>

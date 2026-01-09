@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>New Incident</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+* { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+
+body {
+  margin: 0;
+  background: #f6f8fb;
+  color: #1f2933;
+}
+
+/* HEADER */
+.header {
+  margin: 24px;
+  border-radius: 20px;
+  background: radial-gradient(circle at top left, #3a8fb7, #06141f 70%);
+  color: #fff;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left { display: flex; gap: 16px; align-items: center; }
+
+.back-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 2px solid #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+
+.favorite-btn {
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* STEPS */
+.steps {
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.step.active {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.step-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.step.active .step-circle {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: #cbd5e1;
+}
+
+/* CONTENT */
+.content {
+  max-width: 700px;
+  margin: 40px auto 140px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.form { max-width: 520px; margin: 0 auto; text-align: left; }
+
+.form-group { margin-bottom: 20px; }
+
+label { font-size: 14px; font-weight: 600; }
+
+.required { color: #dc2626; }
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #9ca3af;
+}
+
+input.invalid { border-color: #dc2626; }
+
+.editor {
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+}
+
+.editor.invalid { border-color: #dc2626; }
+
+.editor-content {
+  min-height: 120px;
+  padding: 12px;
+  outline: none;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 13px;
+  display: none;
+  margin-top: 6px;
+}
+
+/* FOOTER */
+.footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn {
+  padding: 10px 24px;
+  border-radius: 22px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: #fff;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+}
+
+.btn-primary {
+  background: #2563eb;
+  border: 1px solid #2563eb;
+  color: #fff;
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.success-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 3px solid #2e8b57;
+  color: #2e8b57;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="back-btn" onclick="goToIndex()">←</div>
+    <div>
+      <strong>New Incident</strong><br>
+      <small>Submit New Generic Incident</small>
+    </div>
+  </div>
+  <button class="favorite-btn">♡ Add to favorites</button>
+</div>
+
+<!-- STEPS -->
+<div class="steps">
+  <div class="step">
+    <div class="step-circle">1</div> Step 1
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-circle">2</div> Step 2
+  </div>
+  <div class="step-line"></div>
+  <div class="step active">
+    <div class="step-circle">3</div> Step 3
+  </div>
+</div>
+
+<div class="content">
+  <h2>Almost there!</h2>
+  <p>Fill the below details to raise the request ticket</p>
+
+  <div class="form">
+    <div class="form-group">
+      <label>Summary <span class="required">*</span></label>
+      <input id="summary">
+      <div class="error" id="summaryError">Summary is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label>Description <span class="required">*</span></label>
+      <div class="editor" id="editorBox">
+        <div class="editor-content" id="description" contenteditable="true"></div>
+      </div>
+      <div class="error" id="descError">Description is required.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <button class="btn btn-secondary" onclick="goToIndex()">Cancel</button>
+  <button class="btn btn-primary" onclick="submitForm()">Submit</button>
+</div>
+
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="success-icon">✓</div>
+    <h3>Request created successfully</h3>
+    <button class="btn btn-secondary" onclick="goToIndex()">View My Items</button>
+  </div>
+</div>
+
+<script>
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbygKUOmvxWyI9ZaDgXK-OqMkSpB8IE2415VhEZ1Bef3PZCp8bCWA9Livtut-Y_cY_G0/exec";
+
+function goToIndex() {
+  window.location.href = "/HEAT/myitems.html";
+}
+
+function submitForm() {
+  const summary = document.getElementById("summary");
+  const description = document.getElementById("description");
+  const editorBox = document.getElementById("editorBox");
+
+  let valid = true;
+
+  if (!summary.value.trim()) {
+    summary.classList.add("invalid");
+    document.getElementById("summaryError").style.display = "block";
+    valid = false;
+  } else {
+    summary.classList.remove("invalid");
+    document.getElementById("summaryError").style.display = "none";
+  }
+
+  if (!description.innerText.trim()) {
+    editorBox.classList.add("invalid");
+    document.getElementById("descError").style.display = "block";
+    valid = false;
+  } else {
+    editorBox.classList.remove("invalid");
+    document.getElementById("descError").style.display = "none";
+  }
+
+  if (!valid) return;
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      summary: summary.value.trim(),
+      description: description.innerText.trim()
+    })
+  });
+
+  document.getElementById("successModal").style.display = "flex";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Professional Certifications | Mahesh Karande</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="/incsm.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --ivanti-header: #1f1f1f;
+      --ivanti-blue: #0078d4;
+      --border: #d2d2d7;
+
+      /* macOS white */
+      --bg-main: #f5f5f7;
+      --bg-card: #ffffff;
+
+      --text-main: #1d1d1f;
+      --text-muted: #515154;
+
+      --accent: #ffd700;
+      --radius: 14px;
+      --transition: all 0.25s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", SegoeUI, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+    }
+
+    /* ================= TOP BAR (UNCHANGED) ================= */
+    .topbar {
+      height: 48px;
+      background: var(--ivanti-header);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: lowercase;
+      margin-right: 26px;
+      color: #fff;
+    }
+
+    .menu { flex: 1; }
+
+    .menu ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      padding-bottom: 4px;
+      opacity: 0.95;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      opacity: 1;
+      border-bottom: 2px solid var(--ivanti-blue);
+    }
+
+    /* ================= ROLE SWITCHER (UNCHANGED) ================= */
+    .user-menu { position: relative; }
+
+    .user-trigger {
+      background: none;
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .user-icon { font-size: 20px; }
+
+    .user-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .user-name { font-size: 13px; font-weight: 600; }
+    .user-role { font-size: 11px; color: #cfcfcf; }
+    .caret { font-size: 11px; }
+
+    .user-dropdown {
+      position: absolute;
+      right: 0;
+      top: 46px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      min-width: 220px;
+      display: none;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      z-index: 2000;
+    }
+
+    .user-dropdown a {
+      display: block;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #1b1f23;
+      text-decoration: none;
+    }
+
+    .user-dropdown a:hover { background: #f2f5f7; }
+
+    .page-offset { padding-top: 48px; }
+
+    /* ================= PAGE ================= */
+    .page {
+      padding: 80px 20px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hover-underline {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hover-underline::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      width: 0;
+      height: 2px;
+      background: var(--ivanti-blue);
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    .hover-underline:hover::after { width: 100%; }
+
+    .hero-desc {
+      color: var(--text-muted);
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    /* ================= STATS ================= */
+    .stats {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      margin-bottom: 70px;
+      text-align: center;
+    }
+
+    .stats h2 {
+      color: var(--ivanti-blue);
+      font-size: 1.6rem;
+      margin-bottom: 26px;
+      font-weight: 600;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 28px;
+    }
+
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--ivanti-blue);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ================= CERTIFICATES ================= */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 26px;
+    }
+
+    .cert-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      transition: var(--transition);
+    }
+
+    .cert-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--ivanti-blue);
+    }
+
+    .cert-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .cert-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .cert-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--ivanti-blue);
+      color: #fff;
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 14px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .cert-card:hover .cert-badge { opacity: 1; }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">ivanti</div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="/HEAT/Default.html">Home</a></li>
+      <li><a href="/HEAT/Skill.html">Skills</a></li>
+      <li><a href="/HEAT/Experience.html">Experience</a></li>
+      <li><a href="/HEAT/CoverLetter.html">Cover Letter</a></li>
+      <li><a href="/HEAT/Certificate.html" class="active">Certificates</a></li>
+      <li><a href="/HEAT/Awards.html">Awards</a></li>
+      <li><a href="https://bit.ly/MaheshIvanti" target="_blank">Projects</a></li>
+       <li><a href="/HEAT/Contact.html" target="_blank">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-menu">
+    <button class="user-trigger">
+      <i class="fa-regular fa-user user-icon"></i>
+      <div class="user-text">
+        <div class="user-name">Mahesh Karande</div>
+        <div class="user-role">Administrator</div>
+      </div>
+      <i class="fa-solid fa-caret-down caret"></i>
+    </button>
+
+    <!-- <div class="user-dropdown">
+      <a href="/IndexHome.html">Administrator</a>
+      <a href="/IndexSelfService.html">Self Service</a>
+    </div> -->
+  </div>
+</header>
+
+<div class="page-offset">
+<main class="page">
+
+  <section class="hero">
+    <h1 class="hero-title">
+      <span class="hover-underline">Professional Certifications</span>
+    </h1>
+
+    <p class="hero-desc">
+      Proven expertise in ITSM, ITAM, and Ivanti integrations, driving efficiency and business
+      success through optimized workflows and automation. These certifications validate my
+      deep technical knowledge and commitment to excellence in IT service management.
+    </p>
+  </section>
+
+  <section class="stats">
+    <h2>Certification Achievements</h2>
+    <div class="stats-grid">
+      <div><div class="stat-number">8+</div><div class="stat-label">Professional Certifications</div></div>
+      <div><div class="stat-number">7+</div><div class="stat-label">Ivanti Specializations</div></div>
+      <div><div class="stat-number">32+</div><div class="stat-label">Clients Served</div></div>
+      <div><div class="stat-number">8+</div><div class="stat-label">Years Experience</div></div>
+    </div>
+  </section>
+
+  <section class="cert-grid">
+    <div class="cert-card"><span class="cert-badge">View Certificate</span><img src="/experienced-consultant-service-manager-on-demand.png"><p>Experienced Consultant – Service Manager On Demand</p></div>
+    <div class="cert-card"><span class="cert-badge">View Certificate</span><img src="/Ivanti Neurons for ITSM - Consultant - Scenario-based.png"><p>Ivanti Neurons for ITSM – Consultant (Scenario-based)</p></div>
+    <div class="cert-card"><span class="cert-badge">View Certificate</span><img src="/Ivanti Neurons for ITSM - Administrator Administration.png"><p>Ivanti Neurons for ITSM – Administrator Administration</p></div>
+    <div class="cert-card"><span class="cert-badge">View Certificate</span><img src="/Ivanti Neurons for ITAM - Administrator Configuration.png"><p>Ivanti Neurons for ITAM – Administrator Configuration</p></div>
+    <div class="cert-card"><span class="cert-badge">View Certificate</span><img src="/Ivanti Neurons for ITSM - Administrator Configuration.png"><p>Ivanti Neurons for ITSM – Administrator Configuration</p></div>
+    <div class="cert-card"><span class="cert-badge">View Certificate</span><img src="/service-manager-administrator-certification-exam-english.png"><p>Service Manager – Administrator Certification</p></div>
+    <div class="cert-card"><span class="cert-badge">View Certificate</span><img src="/ivanti-neurons-for-itsm-using-searches.png"><p>Ivanti Neurons for ITSM – Using Searches</p></div>
+    <div class="cert-card"><span class="cert-badge">View Certificate</span><img src="/ivanti-neurons-for-itsm-principles-and-best-practices.png"><p>Ivanti Neurons for ITSM – Principles & Best Practices</p></div>
+  </section>
+
+</main>
+</div>
+
+<script>
+  const trigger = document.querySelector(".user-trigger");
+  const dropdown = document.querySelector(".user-dropdown");
+
+  trigger.addEventListener("click", e => {
+    e.stopPropagation();
+    dropdown.style.display =
+      dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  document.addEventListener("click", () => {
+    dropdown.style.display = "none";
+  });
+</script>
+
+</body>
+</html>
