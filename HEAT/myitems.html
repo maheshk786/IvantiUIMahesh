@@ -21,6 +21,41 @@ body {
   background: radial-gradient(circle at top left, #3a8fb7, #06141f 70%);
   color: #fff;
   padding: 32px;
+  position: relative;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background .2s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* HEADER CONTENT */
+.header-content {
+  margin-left: 56px; /* space for back button */
+}
+
+.header-content h1 {
+  margin: 0;
+}
+
+.header-content p {
+  margin: 6px 0 0;
 }
 
 /* CONTENT */
@@ -197,8 +232,12 @@ body {
 </div>
 
 <div class="header">
-  <h1>My Items</h1>
-  <p>Raise a Application Issue</p>
+  <div class="back-btn" onclick="goToIndex()">←</div>
+
+  <div class="header-content">
+    <h1>My Items</h1>
+    <p>Raise a Application Issue</p>
+  </div>
 </div>
 
 <div class="container">
@@ -256,6 +295,10 @@ function formatDate(dateString) {
 }
 
 function goHome() {
+  window.location.href = "/HEAT/Service.html";
+}
+
+function goToIndex() {
   window.location.href = "/HEAT/Service.html";
 }
 
