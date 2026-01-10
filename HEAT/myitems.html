@@ -39,7 +39,6 @@ body {
   cursor: pointer;
 }
 
-
 .header-content {
   margin-left: 56px;
 }
@@ -277,9 +276,14 @@ function formatDate(ts) {
   return d.toLocaleString();
 }
 
+function formatIncidentNumber(num) {
+  if (!num) return "-";
+  return num.replace(/^INC/i, "");
+}
+
 function openModal(item) {
   document.getElementById("modalTitle").textContent =
-    item.incidentNumber || "-";
+    formatIncidentNumber(item.incidentNumber);
 
   document.getElementById("modalType").textContent =
     item.requestType || "-";
@@ -327,7 +331,7 @@ fetch(API_URL)
 
       card.innerHTML = `
         <div class="card-header">
-          ${item.incidentNumber} · ${item.requestType}
+          ${formatIncidentNumber(item.incidentNumber)} · ${item.requestType}
         </div>
 
         <div class="card-title">
