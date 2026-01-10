@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Alert</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #1f2933;
+}
+
+/* HEADER BANNER */
+.header {
+  margin: 24px;
+  height: 110px;
+  border-radius: 18px;
+  background: radial-gradient(circle at left, #1e3a5f, #020617);
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  color: #ffffff;
+  gap: 18px;
+}
+
+.back-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.header-title {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+/* PAGE CONTENT */
+.container {
+  padding: 0 32px 40px;
+}
+
+.breadcrumb {
+  margin: 16px 0 12px;
+  font-size: 14px;
+  color: #2563eb;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 16px 0 10px;
+}
+
+/* TABLE */
+.table-wrapper {
+  margin-top: 18px;
+  max-width: 900px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 10px;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+tbody td {
+  padding: 14px 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.category {
+  width: 180px;
+}
+
+.status {
+  width: 140px;
+}
+
+.footer {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #475569;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <button class="back-btn" onclick="goBack()" aria-label="Back">
+    &#8592;
+  </button>
+  <div class="header-title">Alert</div>
+</div>
+
+<div class="container">
+  <div class="breadcrumb">Home / Alert</div>
+
+  <div class="section-title">Favorite Searches</div>
+  <div class="footer">1 search record</div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th class="category">Category</th>
+          <th class="status">Status</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Motivation</td>
+          <td>Current</td>
+          <td id="motivationText"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  function goBack() {
+    window.location.href = "/HEAT/Service.html";
+  }
+
+  const messages = [
+    "Show up today even if the energy isn’t there yet.",
+    "Do the small thing you’re avoiding. Momentum follows.",
+    "Consistency today matters more than intensity tomorrow.",
+    "Progress counts even when it feels quiet.",
+    "Start before you feel ready. That’s how ready shows up.",
+    "One focused effort today moves everything forward."
+  ];
+
+  const today = new Date().toDateString();
+  const index =
+    today.split("").reduce((sum, c) => sum + c.charCodeAt(0), 0) %
+    messages.length;
+
+  document.getElementById("motivationText").textContent = messages[index];
+</script>
+
+</body>
+</html>
