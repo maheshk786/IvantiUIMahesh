@@ -260,8 +260,10 @@ input.invalid { border-color: #dc2626; }
 </div>
 
 <script>
-const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbygKUOmvxWyI9ZaDgXK-OqMkSpB8IE2415VhEZ1Bef3PZCp8bCWA9Livtut-Y_cY_G0/exec";
+// const SCRIPT_URL =
+//   "https://script.google.com/macros/s/AKfycbygKUOmvxWyI9ZaDgXK-OqMkSpB8IE2415VhEZ1Bef3PZCp8bCWA9Livtut-Y_cY_G0/exec";
+
+  const SCRIPT_URL ="https://script.google.com/macros/s/AKfycby1oAdAGfPj0uih4mWNWZjP6XcTKridkGiGl3GvPY2CgQYXJiY1mHOnhWX3hUKezY1i/exec";
 
 function goToIndex() {
   window.location.href = "/HEAT/myitems.html";
@@ -295,13 +297,15 @@ function submitForm() {
   if (!valid) return;
 
   fetch(SCRIPT_URL, {
-    method: "POST",
-    mode: "no-cors",
-    body: JSON.stringify({
-      summary: summary.value.trim(),
-      description: description.innerText.trim()
-    })
-  });
+  method: "POST",
+  mode: "no-cors",
+  body: JSON.stringify({
+    type: "incident",
+    summary: summary.value.trim(),
+    description: description.innerText.trim()
+  })
+});
+
 
   document.getElementById("successModal").style.display = "flex";
 }

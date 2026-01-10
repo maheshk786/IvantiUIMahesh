@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Service Catalog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #1f2933;
+}
+
+/* ===== HERO / BANNER ===== */
+.hero {
+  position: relative;
+  margin: 24px;
+  border-radius: 24px;
+  height: 160px;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, #0fb9d8, #020b18 70%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 32px 40px;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 60% 40%, rgba(15,185,216,.35), transparent 55%),
+    radial-gradient(circle at 80% 60%, rgba(15,185,216,.25), transparent 55%);
+  pointer-events: none;
+}
+
+/* BACK BUTTON – LEFT MID */
+.back-btn {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 5;
+  transition: background .2s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  margin-left: 48px;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 26px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 14px;
+  opacity: .9;
+}
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb {
+  max-width: 1200px;
+  margin: 16px auto 0;
+  padding: 0 24px;
+  font-size: 13px;
+}
+
+.breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  margin: 24px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ===== CONTENT ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ===== SERVICE CARD ===== */
+.card {
+  width: 360px;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  transition: box-shadow .2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+}
+
+.card-top {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #1dd1a1;
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.card-desc {
+  margin: 12px 0 24px;
+  font-size: 14px;
+  color: #374151;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.badge {
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="back-btn" onclick="goBack()">←</div>
+
+  <div class="hero-content">
+    <h1>Service Catalog</h1>
+    <p>Raise a request for a new device, software etc., or Report an issue</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/HEAT/Service.html">Home</a> / Service Catalog
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTENT -->
+<div class="container">
+  <div class="card" onclick="openService()">
+    <div class="card-top">
+      <div class="card-icon">🔓</div>
+      <div class="card-title">Account Unlock</div>
+    </div>
+
+    <div class="card-desc">
+      Unlock an User Account
+    </div>
+
+    <div class="card-footer">
+      <div>IT Services</div>
+      <div>
+        ⏱ 1 day &nbsp;
+        <span class="badge">Featured</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function goBack() {
+  window.location.href = "/HEAT/Service.html";
+}
+
+function openService() {
+  window.location.href = "/HEAT/AccountUnlock.html";
+}
+</script>
+
+</body>
+</html>

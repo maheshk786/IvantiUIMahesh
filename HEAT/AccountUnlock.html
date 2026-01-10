@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Account Unlock</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+* { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #1f2933;
+  padding-bottom: 96px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  margin: 24px;
+  border-radius: 24px;
+  height: 160px;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, #0fb9d8, #020b18 70%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 32px 40px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 48px;
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #1dd1a1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.favorite-btn {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+/* ===== PAGE ===== */
+.page {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 40px;
+}
+
+.form-group { margin-bottom: 20px; }
+
+label { font-weight: 600; font-size: 14px; }
+
+.required { color: #dc2626; }
+
+input, select {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #9ca3af;
+  font-size: 14px;
+}
+
+input.error, select.error { border-color: #dc2626; }
+
+.error-text {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 6px;
+  display: none;
+}
+
+/* ===== SIDE CARD ===== */
+.side-card {
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* ===== ACTION BAR ===== */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 16px 24px;
+}
+
+.action-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-secondary {
+  background: #fff;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+}
+
+.btn-primary {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-box {
+  width: 470px;
+  height: 225px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal { text-align: center; }
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #cbd5e1;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 12px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid #22c55e;
+  color: #22c55e;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.modal-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="back-btn" onclick="goBack()">←</div>
+
+  <div class="hero-content">
+    <div class="service-icon">🔓</div>
+    <div>
+      <h2>Account Unlock</h2>
+      <small>Unlock a user account</small>
+    </div>
+  </div>
+
+  <button class="favorite-btn">♡ Add to favorites</button>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+  <div>
+    <div class="form-group">
+      <label>Requested By <span class="required">*</span></label>
+      <select id="requestedBy">
+        <option value="">Select…</option>
+        <option value="Mahesh Karande">Mahesh Karande</option>
+      </select>
+      <div class="error-text" id="reqByError">Requested By is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label>Login ID <span class="required">*</span></label>
+      <input type="text" id="loginId">
+      <div class="error-text" id="loginError">Login ID is required.</div>
+    </div>
+  </div>
+
+  <div class="side-card">
+    <strong>Delivery Info</strong>
+    <p>Estimate: 1 day</p>
+  </div>
+</div>
+
+<!-- ACTION BAR -->
+<div class="action-bar">
+  <div class="action-inner">
+    <button class="btn btn-secondary" onclick="goBack()">Cancel</button>
+    <button class="btn btn-primary" onclick="submitRequest()">Request Now</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal" id="loadingState">
+      <div class="spinner"></div>
+      <p>Your request is being submitted</p>
+    </div>
+
+    <div class="modal" id="successState" style="display:none;">
+      <div class="success-icon">✓</div>
+      <p><strong>Request submitted successfully</strong></p>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="goHome()">Back to Home</button>
+        <button class="btn btn-secondary" onclick="goRequest()">View My Request</button>
+        <button class="btn btn-primary" onclick="goCatalog()">Back to Catalog</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycby1oAdAGfPj0uih4mWNWZjP6XcTKridkGiGl3GvPY2CgQYXJiY1mHOnhWX3hUKezY1i/exec";
+
+function goBack() { window.location.href = "/HEAT/ServiceCatalog.html"; }
+function goHome() { window.location.href = "/HEAT/Service.html"; }
+function goCatalog() { window.location.href = "/HEAT/ServiceCatalog.html"; }
+function goRequest() { window.location.href = "/HEAT/MyItems.html"; }
+
+function submitRequest() {
+  const requestedBy = document.getElementById("requestedBy");
+  const loginId = document.getElementById("loginId");
+
+  let valid = true;
+
+  if (!requestedBy.value) {
+    requestedBy.classList.add("error");
+    document.getElementById("reqByError").style.display = "block";
+    valid = false;
+  } else {
+    requestedBy.classList.remove("error");
+    document.getElementById("reqByError").style.display = "none";
+  }
+
+  if (!loginId.value.trim()) {
+    loginId.classList.add("error");
+    document.getElementById("loginError").style.display = "block";
+    valid = false;
+  } else {
+    loginId.classList.remove("error");
+    document.getElementById("loginError").style.display = "none";
+  }
+
+  if (!valid) return;
+
+  document.getElementById("modal").style.display = "flex";
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      type: "account_unlock",
+      summary: requestedBy.value,
+      description: loginId.value.trim()
+    })
+  });
+
+  setTimeout(() => {
+    document.getElementById("loadingState").style.display = "none";
+    document.getElementById("successState").style.display = "block";
+  }, 1500);
+}
+</script>
+
+</body>
+</html>

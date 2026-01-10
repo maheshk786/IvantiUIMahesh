@@ -24,11 +24,11 @@ body {
   position: relative;
 }
 
-/* BACK BUTTON */
 .back-btn {
   position: absolute;
-  top: 24px;
   left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -37,25 +37,11 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 18px;
-  transition: background .2s ease;
 }
 
-.back-btn:hover {
-  background: rgba(255,255,255,0.25);
-}
 
-/* HEADER CONTENT */
 .header-content {
-  margin-left: 56px; /* space for back button */
-}
-
-.header-content h1 {
-  margin: 0;
-}
-
-.header-content p {
-  margin: 6px 0 0;
+  margin-left: 56px;
 }
 
 /* CONTENT */
@@ -96,15 +82,15 @@ body {
   margin-bottom: 12px;
 }
 
+.small {
+  font-size: 13px;
+  color: #374151;
+}
+
 .card-footer {
   display: flex;
   justify-content: space-between;
   font-size: 13px;
-}
-
-.small {
-  font-size: 13px;
-  color: #374151;
 }
 
 .status {
@@ -127,7 +113,6 @@ body {
   padding: 16px;
   display: flex;
   justify-content: center;
-  z-index: 100;
 }
 
 .home-btn {
@@ -162,14 +147,7 @@ body {
   margin-bottom: 12px;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.loader-text {
-  font-size: 14px;
-  color: #374151;
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* MODAL */
 .modal-overlay {
@@ -228,22 +206,24 @@ body {
 <!-- LOADER -->
 <div class="loader-overlay" id="loader">
   <div class="spinner"></div>
-  <div class="loader-text">Loading your items…</div>
+  <div class="small">Loading your items…</div>
 </div>
 
+<!-- HEADER -->
 <div class="header">
-  <div class="back-btn" onclick="goToIndex()">←</div>
-
+  <div class="back-btn" onclick="goHome()">←</div>
   <div class="header-content">
     <h1>My Items</h1>
-    <p>Raise a Application Issue</p>
+    <p>Your Incidents & Requests</p>
   </div>
 </div>
 
+<!-- CARDS -->
 <div class="container">
   <div class="cards" id="cards"></div>
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
   <button class="home-btn" onclick="goHome()">Home</button>
 </div>
@@ -257,12 +237,17 @@ body {
     </div>
 
     <div class="modal-section">
-      <div class="modal-label">Subject</div>
-      <div class="modal-value" id="modalSubject"></div>
+      <div class="modal-label">Request Type</div>
+      <div class="modal-value" id="modalType"></div>
     </div>
 
     <div class="modal-section">
-      <div class="modal-label">Description</div>
+      <div class="modal-label" id="labelSummary">Summary</div>
+      <div class="modal-value" id="modalSummary"></div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-label" id="labelDescription">Description</div>
       <div class="modal-value" id="modalDescription"></div>
     </div>
 
@@ -280,39 +265,47 @@ body {
 
 <script>
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxJaxefxA99YlDrafb-4SVqQCDrmcSjo9z8UlKa4Sl_6EWC2Tct9XagWZwg88Y9A2LT/exec";
-
-function formatDate(dateString) {
-  const d = new Date(dateString);
-  if (isNaN(d)) return "-";
-  return (
-    String(d.getMonth() + 1).padStart(2, "0") + "/" +
-    String(d.getDate()).padStart(2, "0") + "/" +
-    d.getFullYear() + " " +
-    String(d.getHours()).padStart(2, "0") + ":" +
-    String(d.getMinutes()).padStart(2, "0")
-  );
-}
+  "https://script.google.com/macros/s/AKfycby1oAdAGfPj0uih4mWNWZjP6XcTKridkGiGl3GvPY2CgQYXJiY1mHOnhWX3hUKezY1i/exec";
 
 function goHome() {
   window.location.href = "/HEAT/Service.html";
 }
 
-function goToIndex() {
-  window.location.href = "/HEAT/Service.html";
+function formatDate(ts) {
+  const d = new Date(ts);
+  if (isNaN(d)) return "-";
+  return d.toLocaleString();
 }
 
 function openModal(item) {
   document.getElementById("modalTitle").textContent =
-    "Incident " + item.incidentNumber;
-  document.getElementById("modalSubject").textContent =
+    item.incidentNumber || "-";
+
+  document.getElementById("modalType").textContent =
+    item.requestType || "-";
+
+  const labelSummary = document.getElementById("labelSummary");
+  const labelDescription = document.getElementById("labelDescription");
+
+  if (item.requestType === "Account Unlock") {
+    labelSummary.textContent = "Requested By";
+    labelDescription.textContent = "Login ID";
+  } else {
+    labelSummary.textContent = "Summary";
+    labelDescription.textContent = "Description";
+  }
+
+  document.getElementById("modalSummary").textContent =
     item.summary || "-";
+
   document.getElementById("modalDescription").textContent =
     item.description || "No description provided";
+
   document.getElementById("modalStatus").textContent =
     item.status || "-";
+
   document.getElementById("modalCreated").textContent =
-    formatDate(item.createdOn);
+    item.timestamp ? formatDate(item.timestamp) : "-";
 
   document.getElementById("modal").style.display = "flex";
 }
@@ -327,28 +320,36 @@ fetch(API_URL)
     const cards = document.getElementById("cards");
     cards.innerHTML = "";
 
-    data.forEach(item => {
-      const div = document.createElement("div");
-      div.className = "card";
-      div.onclick = () => openModal(item);
+    data.reverse().forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.onclick = () => openModal(item);
 
-      div.innerHTML = `
-        <div class="card-header">Incident Id ${item.incidentNumber}</div>
-        <div class="card-title">${item.summary}</div>
-        <div class="small">Created Date : ${formatDate(item.createdOn)}</div>
+      card.innerHTML = `
+        <div class="card-header">
+          ${item.incidentNumber} · ${item.requestType}
+        </div>
+
+        <div class="card-title">
+          ${item.summary || "-"}
+        </div>
+
+        <div class="small">
+          Created on ${item.timestamp ? formatDate(item.timestamp) : "-"}
+        </div>
+
         <hr>
+
         <div class="card-footer">
-          <div class="small">Last Updated on ${formatDate(item.lastUpdated)}</div>
-          <div class="status">${item.status}</div>
+          <div class="small">Status</div>
+          <div class="status">${item.status || "-"}</div>
         </div>
       `;
-      cards.appendChild(div);
+
+      cards.appendChild(card);
     });
   })
-  .catch(err => {
-    console.error(err);
-    alert("Failed to load items.");
-  })
+  .catch(() => alert("Failed to load items"))
   .finally(() => {
     document.getElementById("loader").style.display = "none";
   });
