@@ -230,13 +230,24 @@ input.error, select.error { border-color: #dc2626; }
 <!-- PAGE -->
 <div class="page">
   <div>
+
     <div class="form-group">
       <label>Requested By <span class="required">*</span></label>
-      <select id="requestedBy">
+      <select id="requestedBy" onchange="toggleOtherName()">
         <option value="">Select…</option>
         <option value="Mahesh Karande">Mahesh Karande</option>
+        <option value="OTHER">Other (Enter name)</option>
       </select>
       <div class="error-text" id="reqByError">Requested By is required.</div>
+    </div>
+
+    <div class="form-group" id="otherNameGroup" style="display:none;">
+      <input
+        type="text"
+        id="otherName"
+        placeholder="Enter your First Name and Last Name"
+      />
+      <div class="error-text" id="otherNameError">Name is required.</div>
     </div>
 
     <div class="form-group">
@@ -244,6 +255,7 @@ input.error, select.error { border-color: #dc2626; }
       <input type="text" id="loginId">
       <div class="error-text" id="loginError">Login ID is required.</div>
     </div>
+
   </div>
 
   <div class="side-card">
@@ -289,11 +301,19 @@ function goHome() { window.location.href = "/HEAT/Service.html"; }
 function goCatalog() { window.location.href = "/HEAT/ServiceCatalog.html"; }
 function goRequest() { window.location.href = "/HEAT/MyItems.html"; }
 
+function toggleOtherName() {
+  const select = document.getElementById("requestedBy");
+  const group = document.getElementById("otherNameGroup");
+  group.style.display = select.value === "OTHER" ? "block" : "none";
+}
+
 function submitRequest() {
   const requestedBy = document.getElementById("requestedBy");
+  const otherName = document.getElementById("otherName");
   const loginId = document.getElementById("loginId");
 
   let valid = true;
+  let finalRequestedBy = "";
 
   if (!requestedBy.value) {
     requestedBy.classList.add("error");
@@ -302,6 +322,20 @@ function submitRequest() {
   } else {
     requestedBy.classList.remove("error");
     document.getElementById("reqByError").style.display = "none";
+  }
+
+  if (requestedBy.value === "OTHER") {
+    if (!otherName.value.trim()) {
+      otherName.classList.add("error");
+      document.getElementById("otherNameError").style.display = "block";
+      valid = false;
+    } else {
+      otherName.classList.remove("error");
+      document.getElementById("otherNameError").style.display = "none";
+      finalRequestedBy = otherName.value.trim();
+    }
+  } else {
+    finalRequestedBy = requestedBy.value;
   }
 
   if (!loginId.value.trim()) {
@@ -322,7 +356,7 @@ function submitRequest() {
     mode: "no-cors",
     body: JSON.stringify({
       type: "account_unlock",
-      summary: requestedBy.value,
+      summary: finalRequestedBy,
       description: loginId.value.trim()
     })
   });
